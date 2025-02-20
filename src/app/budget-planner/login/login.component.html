@@ -2,7 +2,7 @@
     <h2>Budget planner</h2>
 </div>
 <div class="login-container">
-    <form [formGroup]="loginForm">
+    <form *ngIf="activeForm === 'login'" [formGroup]="loginForm" (ngSubmit)="login()">
         <h2>Login</h2>
         <div class="form-group">
             <input type="email" formControlName="email" placeholder="Email">
@@ -10,5 +10,9 @@
         <div class="form-group">
             <input type="password" formControlName="password" placeholder="Password">
         </div>
+        <button type="submit">Login</button>
+        <p (click)="toggleForm('register')">Don't have an account?
+            <span class="highlighted">Register</span>
+        </p>
     </form>
 </div>
