@@ -2,12 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
     selector: 'app-login',
     standalone: true,
-    imports: [ReactiveFormsModule, CommonModule],
+    imports: [ReactiveFormsModule, CommonModule, MatButtonModule, MatSnackBarModule],
     templateUrl: './login.component.html',
     styleUrl: './login.component.scss'
 })
@@ -41,8 +42,18 @@ export class LoginComponent {
     if(this.loginForm.valid) {
       this.router.navigate(['/budget-planner/dashboard']);
     } else {
-      console.log('Wrong email or password');
       this.snackBar.open('Invalid email or password', 'Close', {duration: 3000});
+    }
+  }
+
+  register() {
+    if(this.registerForm.valid) {
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+      this.router.navigate(['/budget-planner/login']);
+    } else {
+      this.snackBar.open('Please, fill in all fields correctly!', 'Close', {duration: 3000});
     }
   }
 }
