@@ -40,7 +40,7 @@ export class LoginComponent {
 
   login() {
     if(this.loginForm.valid) {
-      this.router.navigate(['/budget-planner/side-nav']);
+      this.router.navigate(['/budget-planner/dashboard']);
     } else {
       this.snackBar.open('Invalid email or password', 'Close', {duration: 3000});
     }
