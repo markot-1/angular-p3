@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,8 +13,8 @@ import { MatButtonModule } from '@angular/material/button';
     styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  loginForm: any;
-  registerForm: any;
+  loginForm: UntypedFormGroup = new UntypedFormGroup({});
+  registerForm: UntypedFormGroup = new UntypedFormGroup({});
   activeForm: 'login' | 'register' = 'login';
 
   constructor(private fb: FormBuilder, 
