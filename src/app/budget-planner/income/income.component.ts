@@ -6,6 +6,7 @@ import {
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-income',
@@ -32,7 +33,9 @@ export class IncomeComponent {
     { source: 'Rental Income', amount: 600, investments: 'Real Estate' },
   ];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.incomeForm = this.fb.group({
@@ -41,6 +44,9 @@ export class IncomeComponent {
       amount: ['', Validators.required],
       investments: ['', Validators.required],
     });
+
+    const currentDate = new Date();
+    this.selectedMonth = currentDate.toLocaleString('default', { month: 'long' });
   }
 
   onChange(event: any) {
@@ -112,5 +118,13 @@ export class IncomeComponent {
         investments: '',
       });
     }
+  }
+
+  saveForm() {
+    console.log("Form saved!");
+  }
+
+  onBack() {
+    this.router.navigate(['/budget-planner/dashboard']);
   }
 }

@@ -23,5 +23,28 @@
                 <button class="button" (click)="onIncome()">View</button> 
             </div>
         </div>
+
+        <div class="card">
+            <div class="card-header">
+              <span class="icon expense-icon"><mat-icon>money_off</mat-icon></span>
+              <h2>Expense</h2>
+            </div>
+            <hr>
+            <div class="income-details">
+              <div class="month">
+                <h3>Last Few Months</h3>
+                <ul>
+                    @for(monthExpense of lastMonthsExpense; track $index) {
+                        <li>{{ monthExpense }}</li>
+                    }
+                </ul>
+              </div>
+              <div class="month">
+                <h3>Current Month</h3>
+                <p>{{ currentMonthExpense }}</p>
+              </div>
+            </div>
+            <button class="button" (click)="onExpense()">View</button> 
+        </div>
     </div>
 </div>
