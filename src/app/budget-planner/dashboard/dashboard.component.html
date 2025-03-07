@@ -46,5 +46,23 @@
             </div>
             <button class="button" (click)="onExpense()">View</button> 
         </div>
+        <div class="card">
+            <div class="card-header">
+              <span class="icon todo-icon"><mat-icon>assignment</mat-icon></span>
+              <h2>To Do Transactions</h2>
+            </div>
+            <hr />
+            <ul>
+                @for(item of todoTransactions; track $index) {
+                    <li>
+                        <span class="transaction-status">
+                          <mat-icon>hourglass_empty</mat-icon>
+                        </span>
+                        <span class="transaction-details">{{ item.description }}</span>
+                      </li>
+                }
+            </ul>
+            <button class="button" (click)="onTodo()">View</button>
+          </div>
     </div>
 </div>

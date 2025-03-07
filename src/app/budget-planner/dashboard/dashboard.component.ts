@@ -15,6 +15,13 @@ export class DashboardComponent {
   lastMonthsExpense = ['January: $800', 'February: $1000', 'March: $1200'];
   currentMonthExpense = '$1500';
 
+  todoTransactions = [
+    { description: 'Pay electricity bill' },
+    { description: 'Submit monthly report' },
+    { description: 'Buy groceries' },
+    { description: 'Call insurance company' }
+  ];
+
   constructor(private router: Router) {}
 
   onIncome() {
@@ -23,5 +30,9 @@ export class DashboardComponent {
 
   onExpense() {
     this.router.navigate(['/budget-planner/expense']);
+  }
+
+  onTodo() {
+    this.router.navigate(['/budget-planner/todo']);
   }
 }
