@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { SideNavComponent } from '../side-nav/side-nav.component';
 import { MatIcon } from '@angular/material/icon';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [SideNavComponent, MatIcon],
+  imports: [SideNavComponent, MatIcon, CommonModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
@@ -14,6 +15,9 @@ export class DashboardComponent {
   currentMonthIncome = '$2000';
   lastMonthsExpense = ['January: $800', 'February: $1000', 'March: $1200'];
   currentMonthExpense = '$1500';
+
+  totalCurrentMonthIncome = 2000;
+  totalCurrentMonthExpense = 1500;
 
   todoTransactions = [
     { description: 'Pay electricity bill' },
@@ -34,5 +38,9 @@ export class DashboardComponent {
 
   onTodo() {
     this.router.navigate(['/budget-planner/todo']);
+  }
+
+  get currentMonthSavings(): number {
+    return this.totalCurrentMonthIncome - this.totalCurrentMonthExpense;
   }
 }

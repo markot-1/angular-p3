@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ExpenseComponent {
 
-  expenseForm: UntypedFormGroup = new UntypedFormGroup({});;
+  expenseForm: UntypedFormGroup = new UntypedFormGroup({});
   selectedMonth: string;
   expenses: { month: string, expenseAmount: number }[] = [
     { month: 'January', expenseAmount: 1500 },
